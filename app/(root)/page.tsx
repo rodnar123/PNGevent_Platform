@@ -1,11 +1,20 @@
+import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
+import { getAllEvents } from "@/lib/actions/event.actions";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const events = await getAllEvents({
+    query: "",
+    category: "",
+    page: 1,
+    limit: 6,
+  });
+
   return (
     <>
-      <section className="bg-slate-900 bg-dotted-pattern bg-contain py-5 md:py-10">
+      <section className="bg-slate-800/35 bg-dotted-pattern bg-contain py-5 md:py-10">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">
@@ -32,14 +41,23 @@ export default function Home() {
       </section>
       <section
         id="events"
-        className="wrapper my-8 flex flex-col gap-8 md:gap-12"
+        className="wrapper my-8 flex flex-col gap-8 md:gap-12 bg-slate-600/35 rounded-lg"
       >
         <h2 className="h2-bold">
-          Trust The <br /> Trusted PNGevent
+          Trust The <br /> Trusted Event Platform-PNGevent
         </h2>
         <div className=" flex w-full flex-col gap-5 md:flex-row">
           Search CategoryFilter
         </div>
+        <Collection
+          data={events?.data}
+          emptyTitle="No events found"
+          emptyStateSubtext="Come back later"
+          collectionType="All_Events"
+          limit={6}
+          page={1}
+          totalPages={2}
+        />
       </section>
     </>
   );

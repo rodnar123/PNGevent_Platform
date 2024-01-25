@@ -7,13 +7,13 @@ export interface IEvent extends Document {
   location?: string;
   createdAt: Date;
   imageUrl: string;
-  startDataTime: Date;
-  endDataTime: Date;
-  price?: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  price: string;
   isFree?: boolean;
   url?: string;
-  category: { id: string; name: string }; // Assuming "Category" is the type for the category field
-  organizer: { id: string; fisrtName: string; lastName: string }; // Assuming "User" is the type for the organizer field
+  category: { _id: string; name: string }; // Assuming "Category" is the type for the category field
+  organizer: { _id: string; firstName: string; lastName: string }; // Assuming "User" is the type for the organizer field
 }
 
 const EventSchema = new Schema({
@@ -22,8 +22,8 @@ const EventSchema = new Schema({
   location: { type: String },
   createdAt: { type: Date, default: Date.now },
   imageUrl: { type: String, required: true },
-  startDataTime: { type: Date, default: Date.now },
-  endDataTime: { type: Date, default: Date.now },
+  startDateTime: { type: Date, default: Date.now },
+  endDateTime: { type: Date, default: Date.now },
   price: { type: String },
   isFree: { type: Boolean },
   url: { type: String },

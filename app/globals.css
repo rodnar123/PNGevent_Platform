@@ -74,7 +74,8 @@
 }
 
 body {
-  background-color: rgb(17, 16, 25);
+  background-color: #1e1d2d;
+
   font-family: var(--font-poppins);
   color: white;
 }
