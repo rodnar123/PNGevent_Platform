@@ -108,7 +108,7 @@ export type CheckoutOrderParams = {
   eventTitle: string;
   eventId: string;
   price: string;
-  isFree: boolean;
+  isFree?: boolean;
   buyerId: string;
 };
 
